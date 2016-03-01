@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from .models import Post
 
@@ -9,10 +9,12 @@ def post_create(request):
     return HttpResponse("<h1>Hello there!</h1>")
 
 def post_detail(request):
+    instance = get_object_or_404(Post, id=3)
     context = {
-        "title": "Detail"
+        "title": instance.title,
+        "instance": instance,
     }
-    return HttpResponse("<h1>Hello detail!</h1>")
+    return render(request, "post_detail.html", context)
 
 def post_list(request):
     queryset = Post.objects.all()
