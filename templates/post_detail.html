@@ -14,5 +14,16 @@
     {{ instance.title }}<br/>
     {{ instance.content|linebreaks }}<br/>
 
+
+
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_url }}">
+      Facebook
+    </a>
+
+    <a href="https://twitter.com/home?status={{ share_string }}%20{{ request.build_absolute_url }}">
+      Twitter
+    </a>
+
+
 </div>
 {% endblock content %}
