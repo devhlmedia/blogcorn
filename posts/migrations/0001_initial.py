@@ -2,12 +2,14 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
+from django.conf import settings
 import posts.models
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
+        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
@@ -21,8 +23,11 @@ class Migration(migrations.Migration):
                 ('height_field', models.IntegerField(default=0)),
                 ('width_field', models.IntegerField(default=0)),
                 ('content', models.TextField()),
+                ('draft', models.BooleanField()),
+                ('publish', models.DateField()),
                 ('updated', models.DateTimeField(auto_now=True)),
                 ('timestamp', models.DateTimeField(auto_now_add=True)),
+                ('user', models.ForeignKey(default=1, to=settings.AUTH_USER_MODEL)),
             ],
             options={
                 'ordering': ['-timestamp', '-updated'],
