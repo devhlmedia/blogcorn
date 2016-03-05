@@ -30,7 +30,7 @@ python manage.py runserver
 
 To setup static and media for project, just create following folder inside root project folder:
 - static
-- static_
+- static_cdn
 - media
 - media_cdn
 
